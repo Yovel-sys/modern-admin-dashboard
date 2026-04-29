@@ -1,6 +1,6 @@
 function Header({title}) {
   return (
-    <header className="mb-8 flex justify-between items-center">
+    <header className="mb-8 px-8 py-4 flex justify-between items-center">
       <h2 className="text-2xl font-bold text-gray-800">{title}</h2>
       <div className="flex items-center space-x-4">
         <span className="text-sm text-gray-500">Welcome back, Yovel</span>
