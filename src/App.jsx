@@ -1,3 +1,4 @@
+import {useState} from "react";
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
@@ -6,13 +7,18 @@ import Orders from "./pages/Orders";
 import Customers from "./pages/Customers";
 
 function App() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <Router>
       <div className="flex h-screen bg-gray-100 font-sans text-left" dir="ltr">
-        <Sidebar />
+        <Sidebar isOpen={isMobileMenuOpen} setIsOpen={setIsMobileMenuOpen} />
 
         <main className="flex-1 flex flex-col overflow-hidden">
-          <Header title="Admin System" />
+          <Header
+            title="Admin System"
+            onMenuClick={() => setIsMobileMenuOpen(true)}
+          />
 
           <div className="flex-1 p-8 overflow-y-auto">
             <Routes>
