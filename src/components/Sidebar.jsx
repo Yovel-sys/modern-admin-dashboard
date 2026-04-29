@@ -6,7 +6,6 @@ export default function Sidebar({isOpen, setIsOpen}) {
 
   return (
     <>
-      {/* Overlay - רקע כהה כשמתפריט פתוח במובייל */}
       {isOpen && (
         <div
           className="fixed inset-0 bg-black/50 z-40 md:hidden"
