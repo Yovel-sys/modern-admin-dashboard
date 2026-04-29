@@ -1,32 +1,19 @@
+import Sidebar from "./components/Sidebar";
+import Header from "./components/Header";
+
 function App() {
   return (
-    // 'flex' גורם לשני החלקים לעמוד אחד ליד השני. 'h-screen' תופס את כל גובה המסך.
-    <div className="flex h-screen bg-gray-100">
-      {/* תפריט צד -Sidebar (לבן, ברוחב קבוע) */}
-      <aside className="w-64 bg-white border-r border-gray-200 p-4">
-        <h1 className="text-xl font-bold text-blue-600 mb-6">הדאשבורד שלי</h1>
-        <nav className="space-y-2">
-          <div className="p-2 bg-blue-50 text-blue-700 rounded cursor-pointer">
-            ראשי
-          </div>
-          <div className="p-2 text-gray-600 hover:bg-gray-50 rounded cursor-pointer">
-            הזמנות
-          </div>
-          <div className="p-2 text-gray-600 hover:bg-gray-50 rounded cursor-pointer">
-            הגדרות
-          </div>
-        </nav>
-      </aside>
+    // changed dir to ltr and text-left
+    <div className="flex h-screen bg-gray-100 font-sans text-left" dir="ltr">
+      <Sidebar />
 
-      {/* תוכן מרכזי - Main Content (אפור בהיר) */}
-      <main className="flex-1 p-8">
-        <header className="mb-8">
-          <h2 className="text-2xl font-bold text-gray-800">סקירה כללית</h2>
-        </header>
+      <main className="flex-1 p-8 overflow-y-auto">
+        <Header title="Overview" />
 
-        {/* כאן נשים בהמשך את הכרטיסיות והגרפים */}
-        <div className="bg-white p-10 rounded-lg shadow-sm border border-gray-200">
-          <p className="text-gray-500">כאן יופיעו הנתונים שלנו בקרוב...</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+            Example Card
+          </div>
         </div>
       </main>
     </div>
