@@ -5,6 +5,8 @@ import Header from "./components/Header";
 import DashboardHome from "./pages/DashboardHome";
 import Orders from "./pages/Orders";
 import Customers from "./pages/Customers";
+import {Toaster} from "react-hot-toast";
+import Settings from "./pages/Settings";
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -12,6 +14,7 @@ function App() {
   return (
     <Router>
       <div className="flex h-screen bg-gray-100 font-sans text-left" dir="ltr">
+        <Toaster position="top-center" reverseOrder={false} />
         <Sidebar isOpen={isMobileMenuOpen} setIsOpen={setIsMobileMenuOpen} />
 
         <main className="flex-1 flex flex-col overflow-hidden">
@@ -25,6 +28,7 @@ function App() {
               <Route path="/" element={<DashboardHome />} />
               <Route path="/orders" element={<Orders />} />
               <Route path="/customers" element={<Customers />} />
+              <Route path="/settings" element={<Settings />} />
             </Routes>
           </div>
         </main>

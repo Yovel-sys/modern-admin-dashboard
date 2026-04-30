@@ -53,6 +53,13 @@ export default function Sidebar({isOpen, setIsOpen}) {
           >
             Customers
           </Link>
+          <Link
+            to="/settings"
+            onClick={() => setIsOpen(false)}
+            className={`block p-2 rounded ${isActive("/settings") ? "bg-blue-50 text-blue-700 font-medium" : "text-gray-600"}`}
+          >
+            Settings
+          </Link>
         </nav>
       </aside>
     </>

@@ -1,14 +1,18 @@
 import StatsCard from "../components/StatsCard";
 import SalesChart from "../components/SalesChart";
 import ProjectTable from "../components/ProjectTable";
-//
-function DashboardHome() {
+import {useApp} from "../context/AppContext";
+
+export default function DashboardHome() {
+  const {appSettings, formatValue} = useApp();
+
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        {/* עכשיו הערך דינמי לפי המטבע שנבחר! */}
         <StatsCard
           title="Total Revenue"
-          value="$45,231"
+          value={formatValue(45231, appSettings.currency)}
           trend="12.5%"
           trendUp={true}
         />
@@ -30,5 +34,3 @@ function DashboardHome() {
     </>
   );
 }
-
-export default DashboardHome;

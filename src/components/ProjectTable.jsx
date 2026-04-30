@@ -1,33 +1,4 @@
-const projects = [
-  {
-    id: 1,
-    name: "Website Redesign",
-    client: "Acme Corp",
-    status: "Completed",
-    amount: "$3,500",
-  },
-  {
-    id: 2,
-    name: "Mobile App QA",
-    client: "Global Tech",
-    status: "In Progress",
-    amount: "$1,200",
-  },
-  {
-    id: 3,
-    name: "SEO Optimization",
-    client: "Local Shop",
-    status: "Pending",
-    amount: "$850",
-  },
-  {
-    id: 4,
-    name: "Cloud Migration",
-    client: "Data Flow",
-    status: "Completed",
-    amount: "$7,000",
-  },
-];
+import {useApp} from "../context/AppContext";
 
 const getStatusStyle = (status) => {
   switch (status) {
@@ -43,6 +14,33 @@ const getStatusStyle = (status) => {
 };
 
 function ProjectTable() {
+  const {appSettings, formatValue} = useApp();
+
+  // נשנה את הנתונים למספרים נקיים כדי שנוכל לחשב אותם
+  const projects = [
+    {
+      id: 1,
+      name: "Website Redesign",
+      client: "Acme Corp",
+      status: "Completed",
+      amount: 3500,
+    },
+    {
+      id: 2,
+      name: "Mobile App QA",
+      client: "Global Tech",
+      status: "In Progress",
+      amount: 1200,
+    },
+    {
+      id: 3,
+      name: "SEO Optimization",
+      client: "Local Shop",
+      status: "Pending",
+      amount: 850,
+    },
+  ];
+
   return (
     <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden mt-8">
       <div className="p-6 border-b border-gray-50">
@@ -68,7 +66,9 @@ function ProjectTable() {
                   {project.name}
                 </td>
                 <td className="px-6 py-4 text-gray-600">{project.client}</td>
-                <td className="px-6 py-4 text-gray-800">{project.amount}</td>
+                <td className="px-6 py-4 text-gray-800">
+                  {formatValue(project.amount, appSettings.currency)}
+                </td>
                 <td className="px-6 py-4">
                   <span
                     className={`px-3 py-1 rounded-full text-xs font-medium ${getStatusStyle(project.status)}`}
