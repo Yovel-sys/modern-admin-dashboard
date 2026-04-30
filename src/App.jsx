@@ -7,6 +7,8 @@ import Orders from "./pages/Orders";
 import Customers from "./pages/Customers";
 import {Toaster} from "react-hot-toast";
 import Settings from "./pages/Settings";
+import Projects from "./pages/Projects";
+import ProjectDetails from "./pages/ProjectDetails";
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -26,6 +28,8 @@ function App() {
           <div className="flex-1 p-8 overflow-y-auto">
             <Routes>
               <Route path="/" element={<DashboardHome />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/projects/:id" element={<ProjectDetails />} />
               <Route path="/orders" element={<Orders />} />
               <Route path="/customers" element={<Customers />} />
               <Route path="/settings" element={<Settings />} />
