@@ -7,9 +7,24 @@ import Orders from "./pages/Orders";
 import Customers from "./pages/Customers";
 import {Toaster} from "react-hot-toast";
 import Settings from "./pages/Settings";
+import {useApp} from "./context/AppContext";
+import Login from "./pages/Login";
 
 function App() {
+  const {isAuthenticated} = useApp();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // אם המשתמש לא מחובר - תציג רק את דף ההתחברות
+  if (!isAuthenticated) {
+    return (
+      <Router>
+        <Toaster position="top-center" />
+        <Login />
+      </Router>
+    );
+  }
+
+  // אם הוא מחובר - תציג את כל האפליקציה כרגיל
 
   return (
     <Router>
