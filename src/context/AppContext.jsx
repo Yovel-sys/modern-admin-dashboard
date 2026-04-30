@@ -32,6 +32,7 @@ export function AppProvider({children}) {
   const logout = () => {
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("userName");
+    setAppSettings((prev) => ({...prev, userName: ""}));
     setIsAuthenticated(false);
   };
 
