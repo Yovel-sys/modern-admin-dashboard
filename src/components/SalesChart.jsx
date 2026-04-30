@@ -7,6 +7,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import {useApp} from "../context/AppContext";
 
 const data = [
   {name: "Jan", sales: 4000},
@@ -18,6 +19,8 @@ const data = [
 ];
 
 function SalesChart() {
+  const {appSettings, formatValue} = useApp();
+
   return (
     <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
       <h3 className="text-lg font-bold text-gray-800 mb-4">
@@ -38,11 +41,18 @@ function SalesChart() {
               tick={{fill: "#9ca3af", fontSize: 12}}
             />
             <YAxis
+              tickFormatter={(value) =>
+                formatValue(value, appSettings.currency)
+              }
               axisLine={false}
               tickLine={false}
-              tick={{fill: "#9ca3af", fontSize: 12}}
+              tick={{fill: "#9ca3af", fontSize: 10}}
             />
             <Tooltip
+              formatter={(value) => [
+                formatValue(value, appSettings.currency),
+                "Revenue",
+              ]}
               contentStyle={{
                 borderRadius: "10px",
                 border: "none",

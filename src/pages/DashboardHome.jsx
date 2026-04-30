@@ -4,15 +4,7 @@ import ProjectTable from "../components/ProjectTable";
 import {useApp} from "../context/AppContext";
 
 export default function DashboardHome() {
-  const {appSettings} = useApp();
-
-  // לוגיקה פשוטה להצגת המטבע הנכון
-  const currencySymbol =
-    appSettings.currency === "ILS"
-      ? "₪"
-      : appSettings.currency === "EUR"
-        ? "€"
-        : "$";
+  const {appSettings, formatValue} = useApp();
 
   return (
     <>
@@ -20,7 +12,7 @@ export default function DashboardHome() {
         {/* עכשיו הערך דינמי לפי המטבע שנבחר! */}
         <StatsCard
           title="Total Revenue"
-          value={`${currencySymbol}45,231`}
+          value={formatValue(45231, appSettings.currency)}
           trend="12.5%"
           trendUp={true}
         />

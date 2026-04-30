@@ -9,12 +9,24 @@ export function AppProvider({children}) {
     currency: "USD", // ברירת מחדל
   });
 
+  const rates = {
+    USD: 1,
+    ILS: 3.1,
+    EUR: 0.9,
+  };
+
+  const formatValue = (value, currency) => {
+    const converted = value * rates[currency];
+    const symbol = currency === "ILS" ? "₪" : currency === "EUR" ? "€" : "$";
+    return `${symbol}${converted.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0})}`;
+  };
+
   const updateSettings = (newSettings) => {
     setAppSettings((prev) => ({...prev, ...newSettings}));
   };
 
   return (
-    <AppContext.Provider value={{appSettings, updateSettings}}>
+    <AppContext.Provider value={{appSettings, updateSettings, formatValue}}>
       {children}
     </AppContext.Provider>
   );
