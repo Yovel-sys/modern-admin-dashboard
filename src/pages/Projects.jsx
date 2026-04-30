@@ -3,6 +3,7 @@ import {useApp} from "../context/AppContext";
 import AddProjectModal from "../components/AddProjectModal";
 import {Link} from "react-router-dom";
 import toast from "react-hot-toast";
+import {motion} from "framer-motion";
 
 function Projects() {
   const {formatValue, appSettings} = useApp();
@@ -89,12 +90,15 @@ function Projects() {
       </div>
 
       {/* רשת הפרויקטים (משתמשת ב-filteredProjects) */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredProjects.length > 0 ? (
-          filteredProjects.map((project) => (
-            <div
+          filteredProjects.map((project, index) => (
+            <motion.div
               key={project.id}
-              className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 animate-in fade-in duration-300"
+              initial={{opacity: 0, scale: 0.9}}
+              animate={{opacity: 1, scale: 1}}
+              transition={{delay: index * 0.05}} // כל כרטיס יופיע בעיכוב קל מהקודם
+              className="bg-white p-6 rounded-xl shadow-sm border border-gray-100"
             >
               <div className="flex justify-between items-start mb-4">
                 <div>
@@ -142,7 +146,7 @@ function Projects() {
                   Details →
                 </Link>
               </div>
-            </div>
+            </motion.div>
           ))
         ) : (
           <div className="col-span-full py-12 text-center bg-white rounded-xl border border-dashed border-gray-300">
@@ -151,7 +155,7 @@ function Projects() {
             </p>
           </div>
         )}
-      </div>
+      </motion.div>
 
       <AddProjectModal
         isOpen={isModalOpen}
