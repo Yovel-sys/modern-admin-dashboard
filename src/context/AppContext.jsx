@@ -9,19 +9,29 @@ export function AppProvider({children}) {
     EUR: 0.9,
   };
 
-  const [isAuthenticated, setIsAuthenticated] = useState(false); // ברירת מחדל: לא מחובר
-  const [appSettings, setAppSettings] = useState({
-    userName: "",
-    emailNotifications: true,
-    currency: "USD",
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return localStorage.getItem("isLoggedIn") === "true";
+  });
+
+  const [appSettings, setAppSettings] = useState(() => {
+    const savedName = localStorage.getItem("userName");
+    return {
+      userName: savedName || "",
+      emailNotifications: true,
+      currency: "USD",
+    };
   });
 
   const login = (name) => {
+    localStorage.setItem("isLoggedIn", "true");
+    localStorage.setItem("userName", name);
     setAppSettings((prev) => ({...prev, userName: name}));
     setIsAuthenticated(true);
   };
 
   const logout = () => {
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("userName");
     setIsAuthenticated(false);
   };
 
