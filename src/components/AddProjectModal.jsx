@@ -6,9 +6,7 @@ function AddProjectModal({isOpen, onClose, onAdd}) {
       <div className="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden">
         <div className="p-6 border-b border-gray-100 flex justify-between items-center">
           <h3 className="text-xl font-bold text-gray-800">New Project</h3>
-          <button
-            onClick={onClose}
-            className="text-gray-400 hover:text-gray-600"
+          <button\n            onClick={onClose}\n            aria-label=\"Close\"\n            className=\"text-gray-400 hover:text-gray-600\"
           >
             ✕
           </button>
