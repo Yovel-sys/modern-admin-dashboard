@@ -51,6 +51,15 @@ function Login() {
           >
             Sign In
           </button>
+          <div className="mt-8 pt-6 border-t border-gray-100 text-center">
+            <p className="text-sm text-blue-600 font-medium bg-blue-50 py-2 px-4 rounded-full inline-block">
+              ✨ Tailor-made for your business needs
+            </p>
+            <p className="text-xs text-gray-400 mt-3 leading-relaxed">
+              This is a demonstration of a fully customizable system. Every
+              feature can be adapted to match your specific workflow.
+            </p>
+          </div>
         </form>
       </div>
     </div>

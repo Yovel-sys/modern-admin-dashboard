@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import {Routes, Route} from "react-router-dom";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import DashboardHome from "./pages/DashboardHome";
@@ -23,10 +23,10 @@ function App() {
   // אם המשתמש לא מחובר - תציג רק את דף ההתחברות
   if (!isAuthenticated) {
     return (
-      <Router>
+      <>
         <Toaster position="top-center" />
         <Login />
-      </Router>
+      </>
     );
   }
 

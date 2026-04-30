@@ -68,6 +68,16 @@ export default function Sidebar({isOpen, setIsOpen}) {
             Settings
           </Link>
         </nav>
+        <div className="mt-auto p-4 border-t border-gray-100">
+          <div className="bg-gray-50 rounded-lg p-3">
+            <p className="text-[10px] uppercase tracking-wider text-gray-400 font-bold mb-1">
+              Custom Development
+            </p>
+            <p className="text-xs text-gray-600 leading-tight">
+              Interface and logic can be modified for any technical requirement.
+            </p>
+          </div>
+        </div>
       </aside>
     </>
   );
