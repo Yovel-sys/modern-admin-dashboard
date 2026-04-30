@@ -46,9 +46,42 @@ export function AppProvider({children}) {
     return `${symbol}${converted.toLocaleString(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0})}`;
   };
 
+  const [projects, setProjects] = useState([
+    {
+      id: 1,
+      name: "E-commerce App",
+      client: "Fashion Store",
+      progress: 75,
+      status: "Active",
+      budget: 12000,
+    },
+    {
+      id: 2,
+      name: "Cybersecurity Audit",
+      client: "Bank Secure",
+      progress: 100,
+      status: "Completed",
+      budget: 8500,
+    },
+    {
+      id: 3,
+      name: "Landing Page",
+      client: "Startup X",
+      progress: 30,
+      status: "Review",
+      budget: 2400,
+    },
+  ]);
+
+  const addProject = (newProj) => {
+    setProjects([{id: Date.now(), ...newProj}, ...projects]);
+  };
+
   return (
     <AppContext.Provider
       value={{
+        projects,
+        addProject, // מוסיפים את אלו ל-Provider
         isAuthenticated,
         login,
         logout,

@@ -11,9 +11,13 @@ import {useApp} from "./context/AppContext";
 import Login from "./pages/Login";
 import Projects from "./pages/Projects";
 import ProjectDetails from "./pages/ProjectDetails";
+import {AnimatePresence} from "framer-motion";
+import {useLocation} from "react-router-dom";
+import PageTransition from "./components/PageTransition";
 
 function App() {
   const {isAuthenticated} = useApp();
+  const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // אם המשתמש לא מחובר - תציג רק את דף ההתחברות
@@ -29,30 +33,72 @@ function App() {
   // אם הוא מחובר - תציג את כל האפליקציה כרגיל
 
   return (
-    <Router>
-      <div className="flex h-screen bg-gray-100 font-sans text-left" dir="ltr">
-        <Toaster position="top-center" reverseOrder={false} />
-        <Sidebar isOpen={isMobileMenuOpen} setIsOpen={setIsMobileMenuOpen} />
+    <div className="flex h-screen bg-gray-100 font-sans text-left" dir="ltr">
+      <Toaster position="top-center" reverseOrder={false} />
+      <Sidebar isOpen={isMobileMenuOpen} setIsOpen={setIsMobileMenuOpen} />
 
-        <main className="flex-1 flex flex-col overflow-hidden">
-          <Header
-            title="Admin System"
-            onMenuClick={() => setIsMobileMenuOpen(true)}
-          />
+      <main className="flex-1 flex flex-col overflow-hidden">
+        <Header
+          title="Admin System"
+          onMenuClick={() => setIsMobileMenuOpen(true)}
+        />
 
-          <div className="flex-1 p-8 overflow-y-auto">
-            <Routes>
-              <Route path="/" element={<DashboardHome />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/projects/:id" element={<ProjectDetails />} />
-              <Route path="/orders" element={<Orders />} />
-              <Route path="/customers" element={<Customers />} />
-              <Route path="/settings" element={<Settings />} />
+        <div className="flex-1 p-8 overflow-y-auto">
+          <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+              <Route
+                path="/"
+                element={
+                  <PageTransition>
+                    <DashboardHome />
+                  </PageTransition>
+                }
+              />
+              <Route
+                path="/projects"
+                element={
+                  <PageTransition>
+                    <Projects />
+                  </PageTransition>
+                }
+              />
+              <Route
+                path="/orders"
+                element={
+                  <PageTransition>
+                    <Orders />
+                  </PageTransition>
+                }
+              />
+              <Route
+                path="/settings"
+                element={
+                  <PageTransition>
+                    <Settings />
+                  </PageTransition>
+                }
+              />
+              <Route
+                path="/customers"
+                element={
+                  <PageTransition>
+                    <Customers />
+                  </PageTransition>
+                }
+              />
+              <Route
+                path="/projects/:id"
+                element={
+                  <PageTransition>
+                    <ProjectDetails />
+                  </PageTransition>
+                }
+              />
             </Routes>
-          </div>
-        </main>
-      </div>
-    </Router>
+          </AnimatePresence>
+        </div>
+      </main>
+    </div>
   );
 }
 
