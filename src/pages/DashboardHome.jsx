@@ -1,14 +1,26 @@
 import StatsCard from "../components/StatsCard";
 import SalesChart from "../components/SalesChart";
 import ProjectTable from "../components/ProjectTable";
-//
-function DashboardHome() {
+import {useApp} from "../context/AppContext";
+
+export default function DashboardHome() {
+  const {appSettings} = useApp();
+
+  // לוגיקה פשוטה להצגת המטבע הנכון
+  const currencySymbol =
+    appSettings.currency === "ILS"
+      ? "₪"
+      : appSettings.currency === "EUR"
+        ? "€"
+        : "$";
+
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        {/* עכשיו הערך דינמי לפי המטבע שנבחר! */}
         <StatsCard
           title="Total Revenue"
-          value="$45,231"
+          value={`${currencySymbol}45,231`}
           trend="12.5%"
           trendUp={true}
         />
@@ -30,5 +42,3 @@ function DashboardHome() {
     </>
   );
 }
-
-export default DashboardHome;

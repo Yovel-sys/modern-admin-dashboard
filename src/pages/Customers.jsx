@@ -1,5 +1,6 @@
 import {useState} from "react";
 import AddCustomerModal from "../components/AddCustomerModal";
+import toast from "react-hot-toast";
 
 const initialCustomers = [
   {id: 1, name: "John Doe", email: "john@example.com", status: "Active"},
@@ -20,6 +21,13 @@ function Customers() {
   const handleAddCustomer = (newCustomer) => {
     const id = customers.length + 1;
     setCustomers([{id, ...newCustomer}, ...customers]);
+    toast.success("Customer added successfully!", {
+      style: {
+        borderRadius: "10px",
+        background: "#333",
+        color: "#fff",
+      },
+    });
   };
 
   return (
