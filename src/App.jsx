@@ -17,10 +17,10 @@ function App() {
   // אם המשתמש לא מחובר - תציג רק את דף ההתחברות
   if (!isAuthenticated) {
     return (
-      <>
+      <Router>
         <Toaster position="top-center" />
         <Login />
-      </>
+      </Router>
     );
   }
 
