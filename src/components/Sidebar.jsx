@@ -40,6 +40,13 @@ export default function Sidebar({isOpen, setIsOpen}) {
             Dashboard
           </Link>
           <Link
+            to="/projects"
+            onClick={() => setIsOpen(false)}
+            className={`block p-2 rounded ${isActive("/projects") ? "bg-blue-50 text-blue-700 font-medium" : "text-gray-600"}`}
+          >
+            Projects
+          </Link>
+          <Link
             to="/orders"
             onClick={() => setIsOpen(false)}
             className={`block p-2 rounded ${isActive("/orders") ? "bg-blue-50 text-blue-700 font-medium" : "text-gray-600"}`}
