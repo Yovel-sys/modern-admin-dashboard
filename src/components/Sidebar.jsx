@@ -76,6 +76,9 @@ export default function Sidebar({isOpen, setIsOpen}) {
             <p className="text-xs text-gray-600 leading-tight">
               Interface and logic can be modified for any technical requirement.
             </p>
+            <p className="mt-4 text-center text-[9px] text-gray-400 font-bold uppercase tracking-[0.3em] opacity-50">
+              © AmirTech 2026
+            </p>
           </div>
         </div>
       </aside>

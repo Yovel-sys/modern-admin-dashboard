@@ -59,6 +59,9 @@ function Login() {
               This is a demonstration of a fully customizable system. Every
               feature can be adapted to match your specific workflow.
             </p>
+            <p className="mt-4 text-center text-[9px] text-gray-400 font-bold uppercase tracking-[0.3em] opacity-50">
+              © AmirTech 2026
+            </p>
           </div>
         </form>
       </div>
